@@ -14,26 +14,25 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v5
-      # - name: Install sing-box
-      #   run: |
-      #     curl -fsSL https://sing-box.app/install.sh | sh -s -- --version 1.12.12
+      - name: Install sing-box
+        run: |
+          curl -fsSL https://sing-box.app/install.sh | sh -s -- --version 1.12.12
   
-      # - name: Set up Python
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: '3.11.9'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11.9'
 
-      # - name: Install requirements.txt
-      #   run: | 
-      #     pip install -r ./requirements.txt 
+      - name: Install requirements.txt
+        run: | 
+          pip install -r ./requirements.txt 
 
-      # - name: Run run.py
-      #   run: python run.py
+      - name: Run run.py
+        run: python run.py
 
 
       - name: Switch to Target Branch
         run: |
           git checkout rule-set
-          ls -al
-          git add ./template/*
-          git push
+          git add template/*
+          git push 
