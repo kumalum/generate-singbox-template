@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v5
       - name: Install sing-box
         run: |
-          curl -fsSL https://sing-box.app/install.sh | sh -s -- --version < 1.12.12>
+          curl -fsSL https://sing-box.app/install.sh | sh -s -- --version 1.12.12
   
       - name: Set up Python
         uses: actions/setup-python@v2
