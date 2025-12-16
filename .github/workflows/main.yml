@@ -32,7 +32,11 @@ jobs:
 
 
       - name: Switch to Target Branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git checkout rule-set
-          git add template/*
-          git push 
+          # 设置 git
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add -f template/*
+          git push origin rule-set
