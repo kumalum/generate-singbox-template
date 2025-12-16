@@ -30,9 +30,9 @@ jobs:
       - name: Run run.py
         run: python run.py
 
-        
+
       - name: Switch to Target Branch
         run: |
           git checkout rule-set
           git add ./template/*
-          git push origin rule-set
+          git push
