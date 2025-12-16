@@ -11,7 +11,7 @@
         "type": "tls",
         "server": "dns.google",
         "domain_resolver": "dns_resolver",
-        "detour": "out_select"
+        "detour": "select"
       },
       {
         "tag": "dns_doh_cloudflare",
@@ -19,7 +19,7 @@
         "server": "cloudflare-dns.com",
         "path": "/dns-query",
         "domain_resolver": "dns_resolver",
-        "detour": "out_select"
+        "detour": "select"
       },
       {
         "tag": "dns_doh_DNSPod",
@@ -27,20 +27,20 @@
         "server": "sm2.doh.pub",
         "path": "/dns-query",
         "domain_resolver": "dns_resolver",
-        "detour": "out_direct"
+        "detour": "direct"
       },
       {
         "tag": "dns_dot_Ali",
         "type": "tls",
         "server": "dns.alidns.com",
         "domain_resolver": "dns_resolver",
-        "detour": "out_direct"
+        "detour": "direct"
       },
       {
         "tag": "dns_resolver",
         "type": "udp",
         "server": "223.5.5.5",
-        "detour": "out_direct"
+        "detour": "direct"
       },
       {
         "tag": "fakeip",
@@ -103,21 +103,7 @@
       "stack": "mixed"
     }
   ],
-  "outbounds": [
-    {
-      "tag": "out_select",
-      "type": "selector",
-      "default": "CF官方优选",
-      "outbounds": [
-        "urltest"
-      ]
-    },
-    {
-      "type": "direct",
-      "udp_fragment": true,
-      "tag": "out_direct"
-    }
-  ],
+  "outbounds": [],
   "route": {
     "auto_detect_interface": true,
     "default_domain_resolver": "dns_resolver",
@@ -132,18 +118,18 @@
       {
         "ip_is_private": true,
         "action": "route",
-        "outbound": "out_direct"
+        "outbound": "direct"
       }
     ],
     "rule_set": [],
-    "final": "out_select"
+    "final": "select"
   },
   "experimental": {
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
       "external_ui": "zashboard",
       "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-no-fonts.zip",
-      "external_ui_download_detour": "out_select"
+      "external_ui_download_detour": "select"
     },
     "cache_file": {
       "enabled": true,
