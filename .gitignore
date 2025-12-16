@@ -88,7 +88,6 @@ config.py
 # test
 test.py
 debug_config.toml
-template/
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
