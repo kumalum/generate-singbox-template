@@ -194,7 +194,7 @@ class Generate:
                     ],
                 "rule_set": cn_tag,
                 "action": "route",
-                "outbound": "direct"
+                "outbound": "out_direct"
             }
             route.append(route_cn)
 

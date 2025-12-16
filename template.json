@@ -27,20 +27,20 @@
         "server": "sm2.doh.pub",
         "path": "/dns-query",
         "domain_resolver": "dns_resolver",
-        "detour": "direct"
+        "detour": "out_direct"
       },
       {
         "tag": "dns_dot_Ali",
         "type": "tls",
         "server": "dns.alidns.com",
         "domain_resolver": "dns_resolver",
-        "detour": "direct"
+        "detour": "out_direct"
       },
       {
         "tag": "dns_resolver",
         "type": "udp",
         "server": "223.5.5.5",
-        "detour": "direct"
+        "detour": "out_direct"
       },
       {
         "tag": "fakeip",
@@ -103,7 +103,13 @@
       "stack": "mixed"
     }
   ],
-  "outbounds": [],
+  "outbounds": [
+    {
+      "type": "direct",
+      "udp_fragment": true,
+      "tag": "out_direct"
+    }
+  ],
   "route": {
     "auto_detect_interface": true,
     "default_domain_resolver": "dns_resolver",
@@ -118,7 +124,7 @@
       {
         "ip_is_private": true,
         "action": "route",
-        "outbound": "direct"
+        "outbound": "out_direct"
       }
     ],
     "rule_set": [],
