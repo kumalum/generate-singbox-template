@@ -1,0 +1,26 @@
+name: Generate sing-box config template
+on: push
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+      - name: Install sing-box
+        run: |
+          sudo apt-get update
+          sudo apt-get install sing-box
+  
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11.9'
+
+      - name: Install requirements.txt
+        run: | 
+          pip install -r ./requirements.txt 
+
+      - name: Run run.py
+        run: python run.py
