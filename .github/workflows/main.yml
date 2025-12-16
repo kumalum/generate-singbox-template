@@ -38,6 +38,7 @@ jobs:
           # 设置 git
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+          git checkout rule-set
           git add -f template/*
           git commit -m "Update template"
           git push origin rule-set
