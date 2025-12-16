@@ -1,0 +1,67 @@
+[Project]
+
+# 配置文件所在的根目录
+root = 'C:\Users\blsm\Desktop\parents'
+## 文件下载目录 root\source\<requests.url.site_microsoft> 
+## json 文件合并后的目录 root\source
+## 日志文件 root\<log.level.path>
+## 输入的模板文件 root\template.json
+## 输出的文件模板文件 root\configs\*.json
+
+[Log]
+# 等级 分别为  debug info warn error
+level = "debug"
+# path = "update_sing-box.log"
+
+[requests]
+headers = {User-Agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0", Accept = "application/json"}
+
+[requests.url]
+# dns 组 格式为 site-<name>,
+# 列表为下载列表 下载路径为 root\source\<site-microsoft-cn>
+
+site-microsoft = [
+	"https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-microsoft.srs"
+]
+
+site-microsoft-cn = [
+	"https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-microsoft@cn.srs"
+]
+
+site-github = [
+	"https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-github.srs"
+]
+
+site-google_play = [
+	"https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-google-play.srs"
+]
+
+site-cn = [
+	"https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs"
+]
+
+site-telegram = [
+	"https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-telegram.srs"
+]
+
+site-ads-all = [
+	"https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs"
+]
+		
+
+gfw = ["https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt"]
+
+apple-cn = [
+	"https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/apple-cn.txt"
+]
+
+[program]
+
+sing-box = 'C:\\Users\\blsm\\AppData\\Roaming\\magic-network\\sing-box\\sing-box.exe'
+
+[Porxy]
+# 程序代理， 当 flag 等于 false 时， 代理不生效
+
+flag = false
+url = "127.0.0.1"
+port = 10808
