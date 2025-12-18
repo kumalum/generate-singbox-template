@@ -37,7 +37,7 @@ jobs:
         run: |
 
           # 克隆 config-singbox仓库
-          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository_owner }}/config-singbox.git
+          git clone https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository_owner }}/config-singbox.git
           cp -r 1.12.json config-singbox/1.12
           cd config-singbox
 
