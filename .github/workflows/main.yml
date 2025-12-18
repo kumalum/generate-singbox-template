@@ -40,8 +40,8 @@ jobs:
           cd config-singbox
 
           # 设置用户以示区分
-          git config user.name Github Actions
-          git config user.email actions@github.com
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@github.com"
           
           # 推送模板文件到 main/版本号中
           git add .
