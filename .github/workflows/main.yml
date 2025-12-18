@@ -6,7 +6,9 @@ on:
   schedule:
     - cron: '0 5 * * *'
   
-
+# 关键：在 workflow 级别设置权限
+permissions:
+  contents: write
 
 jobs:
   build:
