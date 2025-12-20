@@ -53,6 +53,10 @@ def set_inline(conf_route):
     rules.append(remote)
 
     config_data[enum.Element.route][enum.Element.rule_set] = rules
+    
+    if not config.FilePath.output.exists():
+        config.FilePath.output.mkdir(parents=True, exist_ok=True)
+
     writeJSON(config_data, config.FilePath.outinline)
 
 def group_sing_box_tag(content):

@@ -13,9 +13,9 @@ class FilePath:
     pref_example = __base.joinpath('pref.example.toml')
     template = __base.joinpath('template.json')
 
-    __output = config_dir.joinpath("output")
-    outremote = __output.joinpath('remote_rule_set.json')
-    outinline = __output.joinpath('inline_rule_set.json')
+    output = config_dir.joinpath("output")
+    outremote = output.joinpath('remote_rule_set.json')
+    outinline = output.joinpath('inline_rule_set.json')
     
 class Github:
     api = "https://api.github.com/repos/9lit/config-singbox/contents?ref=rule-set"
