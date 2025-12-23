@@ -12,6 +12,7 @@ url = ""
 
 [route.rules.direct]
 ip_is_private = true
+domain_suffix = ["1210923.xyz", "kumanine.dpdns.org", "kuma9.dpdns.org"]
 rule_set = []
 action = "route"
 outbound = "out_direct"
