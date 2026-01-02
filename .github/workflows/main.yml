@@ -1,4 +1,4 @@
-name: Generate sing-box config template
+name: Generate sing-box rule-set
 on: 
   workflow_dispatch:
   push:
@@ -40,6 +40,10 @@ jobs:
 
       - name: Push base/url_set.txt
         run: |
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@github.com"
+
           git add .
           git commit -m "update" || echo "nothing to commit"
           git push || echo "nothing to push"
@@ -50,12 +54,9 @@ jobs:
           # 克隆 config-singbox rule-set 分支的最新提交记录
           git clone --depth 1 -b rule-set https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository_owner }}/config-singbox.git
           
-          ls rule-set
-          cd config-singbox
+          # 复制输出的 rule-set 文件到 config-singbox
           cp -r ./rule-set/*.srs ./config-singbox/
-
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@github.com"
+          cd config-singbox
 
           # 推送源文件 到分支 rule-set
           git add .
