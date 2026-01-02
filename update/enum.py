@@ -2,6 +2,7 @@ class Pref:
     downloads = "downloads"
     program = "program"
     singbox = "sing-box"
+    repo = "repo"
 
 class Suffix:
     srs = ".srs"

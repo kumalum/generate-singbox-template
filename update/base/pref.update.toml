@@ -1,3 +1,5 @@
+repo = "https://raw.githubusercontent.com/kumalum/config-singbox/rule-set"
+
 [downloads]
 
 microsoft = [
@@ -30,7 +32,6 @@ ads_all = [
 
 # AdGuard 规则集直接转换为 srs 文件 无法转换为 json
 adguard = ["https://raw.githubusercontent.com/ppfeufer/adguard-filter-list/refs/heads/master/blocklist"]
-
 
 [program]
 

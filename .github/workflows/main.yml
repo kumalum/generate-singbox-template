@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - update-rule-set.py
   schedule:
     - cron: '0 5 * * *'
   
@@ -16,6 +18,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v5
+      
       - name: Install sing-box
         run: |
           curl -fsSL https://sing-box.app/install.sh | sh -s -- --version 1.12.12
@@ -29,34 +32,34 @@ jobs:
         run: | 
           pip install -r ./requirements.txt 
         
-          # 执行更新程序
       - name: Run Python
         run: |
-          python update-rule-set.py
-          python gen-sing-box-config.py
+          python update-rule-set.py N
 
-      - name: Push to config-singbox repo
+
+      - name: Push base/url_set.txt
         run: |
-
-          # 克隆 config-singbox仓库
-          git clone https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository_owner }}/config-singbox.git
-
-          # 推送 模板文件到 config-singbox/main 仓库中
-          cp -r singbox/output/* config-singbox/1.12
-          cd config-singbox
-
-          # 设置用户以示区分
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@github.com"
-          
-          # 推送模板文件到 main/版本号中
+
           git add .
           git commit -m "update"
           git push
 
+      - name: Push to config-singbox repo
+        run: |
+
+          # 克隆 config-singbox rule-set 分支的最新提交记录
+          git clone --depth 1 -b rule-set https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository_owner }}/config-singbox.git
+
+          cd config-singbox
+          cp rule-set/*.srs config-singbox
+
+          # 设置用户以示区分
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@github.com"
+
           # 推送源文件 到分支 rule-set
-          git checkout rule-set
-          cp ../rule-set/*.srs ./
           git add .
           git commit -m "update"
-          git push 
+          git push
