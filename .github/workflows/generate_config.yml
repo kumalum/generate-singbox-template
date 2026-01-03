@@ -1,6 +1,11 @@
 name: Generate config
 on: 
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - base/template.json
   
 # 关键：在 workflow 级别设置权限
 permissions:
