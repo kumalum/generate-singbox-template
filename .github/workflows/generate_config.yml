@@ -25,6 +25,11 @@ jobs:
       - run:
           python generate-config.py
 
+      - name: Download set_config.json
+        run:
+          mkdir -p output/config
+          curl -o output/config/set_config.json "https://raw.githubusercontent.com/kumalum/rule-set/main/set_config.json"
+
       - name: Push to config-singbox repo
         run: |
 

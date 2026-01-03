@@ -31,9 +31,7 @@ jobs:
       - name: Install sing-box 
         run: |
           curl -fsSL https://sing-box.app/install.sh | sh -s -- --version 1.12.12
-          mkdir -p output/config
-          curl -o output/config/set_config.json "https://raw.githubusercontent.com/kumalum/rule-set/main/set_config.json"
-
+          
       - name: Run Python
         run: |
           python update-rule-set.py N
