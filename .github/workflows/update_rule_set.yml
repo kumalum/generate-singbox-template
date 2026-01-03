@@ -43,10 +43,10 @@ jobs:
           git clone --depth 1 -b rule-set https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository_owner }}/config-singbox.git
           
           # 复制输出的 rule-set 文件到 config-singbox
-          cp -r output/*.srs output/config/set_config.json config-singbox/
+          cp output/*.srs output/config/set_config.json config-singbox/
           cd config-singbox
 
           # 推送源文件 到分支 rule-set
           git add .
           git commit -m "update" || echo "nothing to commit"
-          git push || echo "nothing to push"
+          git push --force || echo "nothing to push"
